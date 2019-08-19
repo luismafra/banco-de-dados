@@ -1,1 +1,9 @@
 ALTER TABLE automovel ADD CONSTRAINT chave_estrangeira FOREIGN KEY(cpf_segurado) REFERENCES segurado(cpf_segurado) ON DELETE SET NULL ON UPDATE CASCADE;
+ALTER TABLE pericia ADD CONSTRAINT chave_estrangeira FOREIGN KEY(cpf_perito) REFERENCES perito(cpf_perito) ON UPDATE CASCADE ON DELETE SET NULL;
+ALTER TABLE pericia ADD CONSTRAINT chave_estrangeira_2 FOREIGN KEY(placa_automovel) REFERENCES automovel(placa_automovel) ON UPDATE CASCADE ON DELETE SET NULL;
+ALTER TABLE reparo ADD CONSTRAINT chave_estrangeira FOREIGN KEY(placa_automovel) REFERENCES automovel(placa_automovel) ON UPDATE CASCADE ON DELETE SET NULL;
+ALTER TABLE reparo ADD CONSTRAINT chave_estrangeira_2 FOREIGN KEY(nome_oficina) REFERENCES oficina(nome_oficina) ON UPDATE CASCADE ON DELETE SET NULL;
+ALTER TABLE reparo ADD CONSTRAINT chave_estrangeira_3 FOREIGN KEY(id_pericia) REFERENCES pericia(id_pericia) ON UPDATE CASCADE ON DELETE SET NULL;
+ALTER TABLE reparo ADD CONSTRAINT chave_estrangeira_4 FOREIGN KEY(id_seguro) REFERENCES seguro(id_seguro) ON UPDATE CASCADE ON DELETE SET NULL;
+ALTER TABLE seguro ADD CONSTRAINT chave_estrangeira FOREIGN KEY(cpf_segurado) REFERENCES segurado(cpf_segurado) ON UPDATE CASCADE ON DELETE SET NULL;
+ALTER TABLE seguro ADD CONSTRAINT chave_estrangeira_2 FOREIGN KEY(id_sinistro) REFERENCES sinistro(id_sinistro) ON UPDATE CASCADE ON DELETE SET NULL;
