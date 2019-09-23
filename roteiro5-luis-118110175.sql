@@ -27,3 +27,29 @@ GROUP BY e.fname
 ORDER BY COUNT(*);
 
 --Q6
+SELECT MIN(d.count) AS qtd
+FROM(
+    SELECT pno,COUNT(*)
+    FROM works_on
+    GROUP BY(pno)
+) AS d;
+
+--Q7
+
+SELECT pno AS num_projeto, MIN(d.count) AS qtd
+FROM(
+    SELECT pno,COUNT(*)
+    FROM works_on
+    GROUP BY(pno)
+) AS d
+GROUP BY pno
+HAVING MIN(d.count) = (SELECT MIN(d.count) AS qtd
+FROM(
+    SELECT pno,COUNT(*)
+    FROM works_on
+    GROUP BY(pno)
+) AS d);
+
+
+--Q8
+
